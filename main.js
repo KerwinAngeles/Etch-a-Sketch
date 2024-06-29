@@ -4,13 +4,23 @@ const btnRandom = document.querySelector('#random');
 const btnReset = document.querySelector('#clear');
 const btnEraser = document.querySelector('#eraser');
 const btnColor = document.querySelector('#color');
+const btnSize = document.querySelector('#size');
+const div = document.querySelector("#itemId")
 
 let temple = 16;
 
-btnRandom.addEventListener("click", () => {
+btnSize.addEventListener("click", () =>{
     let contentRemove = contentDiv.querySelectorAll(".item")
     contentRemove.forEach(div => div.remove());
-    MakeGrid(temple);
+    while (temple <= 100 || temple >= 1) {
+        let size = prompt('Enter the size of your box');
+        MakeGrid(size);
+        return temple;
+    }
+});
+
+btnRandom.addEventListener("click", () => {
+    Random();
 });
 
 btnReset.addEventListener('click', () => {
@@ -26,17 +36,23 @@ btnColor.addEventListener('click', () => {
 })
 
 function MakeGrid(temple){
+    let width;
+    let height = 0.0;
+    width = contentDiv.clientWidth / temple;
+    height = contentDiv.clientHeight / temple
     for (let i = 0; i < temple; i++) {
         for (let j = 0; j < temple; j++) {
             const div = document.createElement('div');
             div.textContent = '';
             div.setAttribute('class', 'item');
             div.setAttribute('id', 'itemId');
+            div.style.width = width + "px";
+            div.style.height = height + "px";
             contentDiv.appendChild(div);
             container.appendChild(contentDiv);
 
             div.addEventListener('mouseover', () =>{
-                ColorsRandom(div)
+                ColorsRandom(div);
             })
         }
     }
@@ -66,11 +82,10 @@ function ColorBlack(){
 }
 
 function Random(){
-    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     let contentAddColor = contentDiv.querySelectorAll('.item');
-    contentAddColor.forEach(div => {
+    contentAddColor.forEach((div) => {
         div.addEventListener('mouseover', () => {
-            div.style.background = "#" + randomColor;
+            ColorsRandom(div);
         })
     })
 }

@@ -1,1 +1,1 @@
-![image](https://github.com/KerwinAngeles/Etch-a-Sketch/assets/133922161/0e1bc716-1651-4a9e-ac74-d5957838b90b)
+![image](https://github.com/KerwinAngeles/Etch-a-Sketch/assets/133922161/b8a604ad-42e8-4b07-a7a0-b3206f43d86c)
